@@ -16,11 +16,7 @@ public class Main {
             int[] atBat = new int[batNum];
 
             System.out.println("0 = out, 1 = single, 2 = double, 3 = triple, 4 = home run");
-            for (int i = 0; i < atBat.length; i++) {    //gathering bases earned & assigning to each index in the array
-                System.out.println("Result for at-bat " + i + ": ");
-                int baseEarned = scan.nextInt();
-                atBat[i] = baseEarned;
-            }
+            validateInput(atBat, scan);
 
             battingAverage(atBat);  //calling on method to calculate the batting average
             System.out.println();
@@ -48,25 +44,43 @@ public class Main {
             }
         }
     }
+    //validating the input for bases earned is between 0 and 4
+    public  static void validateInput(int[] atBat, Scanner scan) {
+        for (int i = 0; i < atBat.length; i++) {
+            boolean correct = true;
+            while (correct) {//gathering bases earned & assigning to each index in the array
+                System.out.println("Result for at-bat " + i + ": ");
+                int baseEarned = scan.nextInt();
+                if (baseEarned >= 0 && baseEarned <= 4) {
+                    atBat[i] = baseEarned;
+                    correct = false;
+                }
+                else {
+                    System.out.println("Invalid input. Please enter number between 0 and 4.");
+                    correct = true;
+                }
+            }
+        }
+    }
     //use of printf and "%.3f" is to only print out 3 decimal places
-    public static void battingAverage(int[] atbat) {
+    public static void battingAverage(int[] atBat) {
         double batBase = 0.0;
         double batAvg = 0.0;
-        for (int i = 0; i < atbat.length; i++){
-            if (atbat[i] > 0) {     //searching for index in array that contain numbers 1 - 4 only
+        for (int i = 0; i < atBat.length; i++){
+            if (atBat[i] > 0) {     //searching for index in array that contain numbers 1 - 4 only
                 batBase = batBase + 1;
-                batAvg = batBase / atbat.length;
+                batAvg = batBase / atBat.length;
             }
         }
         System.out.printf("Batting average: " + "%.3f", batAvg);
     }
-    public static void slugPercentage(int[] atbat) {
+    public static void slugPercentage(int[] atBat) {
         double totalBases = 0.0;
         double percentage = 0.0;
-        for (int i = 0; i < atbat.length; i++) {
-            if (atbat[i] > 0) {
-                totalBases = totalBases + atbat[i];
-                percentage = totalBases / atbat.length;
+        for (int i = 0; i < atBat.length; i++) {
+            if (atBat[i] > 0) {
+                totalBases = totalBases + atBat[i];
+                percentage = totalBases / atBat.length;
             }
         }
         System.out.printf("Slugging Percentage: " + "%.3f", percentage);
