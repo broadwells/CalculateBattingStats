@@ -51,7 +51,7 @@ public class Main {
     public  static void validateInput(int[] atBatNum, Scanner scan) {
         for (int i = 0; i < atBatNum.length; i++) {
             boolean correct = true;
-            while (correct) {//gathering bases earned & assigning to each index in the array
+            while (correct) {   //gathering bases earned & assigning to each index in the array
                 System.out.println("Result for at-bat " + i + ": ");
                 int baseEarned = scan.nextInt();
                 if (baseEarned >= 0 && baseEarned <= 4) {
@@ -82,7 +82,7 @@ public class Main {
         double percentage = 0.0;
         for (int i = 0; i < atBatNum.length; i++) {
             if (atBatNum[i] > 0) {
-                totalBases = totalBases + atBatNum.length;
+                totalBases = totalBases + atBatNum[i];
                 percentage = totalBases / atBatNum.length;
             }
         }
