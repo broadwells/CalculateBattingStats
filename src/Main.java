@@ -45,14 +45,14 @@ public class Main {
         }
     }
     //validating the input for bases earned is between 0 and 4
-    public  static void validateInput(int[] batNum, Scanner scan) {
-        for (int i = 0; i < batNum.length; i++) {
+    public  static void validateInput(int[] atBatNum, Scanner scan) {
+        for (int i = 0; i < atBatNum.length; i++) {
             boolean correct = true;
             while (correct) {//gathering bases earned & assigning to each index in the array
                 System.out.println("Result for at-bat " + i + ": ");
                 int baseEarned = scan.nextInt();
                 if (baseEarned >= 0 && baseEarned <= 4) {
-                    batNum[i] = baseEarned;
+                    atBatNum[i] = baseEarned;
                     correct = false;
                 }
                 else {
@@ -63,23 +63,23 @@ public class Main {
         }
     }
     //use of printf and "%.3f" is to only print out 3 decimal places
-    public static void battingAverage(int[] batNum) {
+    public static void battingAverage(int[] atBatNum) {
         double batBase = 0.0;
         double batAvg = 0.0;
-        for (int i = 0; i < batNum.length; i++){
-            if (batNum[i] > 0) {     //searching for index in array that contain numbers 1 - 4 only
+        for (int i = 0; i < atBatNum.length; i++){
+            if (atBatNum[i] > 0) {     //searching for index in array that contain numbers 1 - 4 only
                 batBase = batBase + 1;
-                batAvg = batBase / batNum.length;
+                batAvg = batBase / atBatNum.length;
             }
         }
         System.out.printf("Batting average: " + "%.3f", batAvg);
     }
-    public static void slugPercentage(int[] batNum) {
+    public static void slugPercentage(int[] atBatNum) {
         double totalBases = 0.0;
         double percentage = 0.0;
-        for (int i = 0; i < batNum.length; i++) {
-            if (batNum[i] > 0) {
-                totalBases = totalBases + batNum.length;
+        for (int i = 0; i < atBatNum.length; i++) {
+            if (atBatNum[i] > 0) {
+                totalBases = totalBases + atBatNum.length;
             }
         }
         System.out.printf("Slugging Percentage: " + "%.3f", percentage);
