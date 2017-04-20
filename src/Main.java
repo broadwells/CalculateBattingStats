@@ -1,5 +1,6 @@
 //author: Stephanie Broadwell
 //lab #8
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +18,8 @@ public class Main {
 
             System.out.println("0 = out, 1 = single, 2 = double, 3 = triple, 4 = home run");
             validateInput(atBat, scan);
+
+            System.out.println("Bases earned: " + Arrays.toString(atBat));  //prints out array elements as a summary
 
             battingAverage(atBat);  //calling on method to calculate the batting average
             System.out.println();
@@ -80,6 +83,7 @@ public class Main {
         for (int i = 0; i < atBatNum.length; i++) {
             if (atBatNum[i] > 0) {
                 totalBases = totalBases + atBatNum.length;
+                percentage = totalBases / atBatNum.length;
             }
         }
         System.out.printf("Slugging Percentage: " + "%.3f", percentage);
